@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gms.web.mapper.MemberMapper">
+<insert id="insertMember"
+      parameterType="com.gms.web.member.MemberDTO">
+      insert into member (member_id,name,password,ssn,regdate,phone,email,profile) 
+      values (#{id},#{name},#{password},#{ssn},now(),#{phone},#{email},'default.jpg')
+</insert>
+<select id="count" resultType="string">
+   select count(*) as count from member
+</select>   
+
+<select id="login" 
+      resultType="com.gms.web.member.MemberDTO"
+      parameterType="com.gms.web.command.CommandDTO">
+      select 
+      member_id as id,
+      name,
+      password,
+      ssn,
+      regdate,
+      phone,
+      email,
+      profile
+      from member where member_id like #{search} 
+</select>
+
+<select id="selectAll" 
+      resultType="com.gms.web.member.StudentDTO"   
+      parameterType="com.gms.web.command.CommandDTO">
+       SELECT *
+         FROM ( 
+         SELECT @NO := @NO + 1 AS num, A.*
+         FROM 
+           ( 
+             select * from Student 
+           ) A,
+           ( SELECT @NO := 0 ) B  
+           ORDER BY num DESC
+         ) C
+         WHERE C.num BETWEEN #{startRow} AND #{endRow}
+         </select>
+         
+  <select id="search" 
+      resultType="com.gms.web.member.StudentDTO"
+      parameterType="com.gms.web.command.CommandDTO">
+       SELECT *
+         FROM ( 
+         SELECT @NO := @NO + 1 AS num, A.*
+         FROM 
+           ( 
+             select * from Student 
+           ) A,
+           ( SELECT @NO := 0 ) B  
+           ORDER BY num DESC
+         ) C
+         WHERE C.name like '%${search}%' 
+       
+</select>
+         
+           <select id="selectById" 
+      resultType="com.gms.web.member.StudentDTO"
+      parameterType="com.gms.web.command.CommandDTO">
+      SELECT * FROM Student WHERE id like #{search}
+       
+</select>
+   <update id="updateProfile" 
+      parameterType="com.gms.web.member.MemberDTO">
+      update Member SET 
+      email = #{email},
+      phone = #{phone},
+      password = #{password}
+      where member_id = #{id}
+</update>
+            
+<delete id="deleteUser"
+         parameterType="com.gms.web.command.CommandDTO"
+         >
+         DELETE FROM Member WHERE member_id like #{search}
+         
+         
+</delete>   
+</mapper>

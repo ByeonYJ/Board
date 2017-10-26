@@ -1,0 +1,82 @@
+@CHARSET "UTF-8";
+html,body{height: 100%;margin: 0 auto; border: 0;}
+#wrapper{
+	position:relative;
+	min-height:100%;
+	padding-bottom: 100px;
+	width: 100%;
+}
+table{border-collapse: collapse;}
+footer{position:absolute; bottom:0; left:0; width: 100%; 
+height: 100px; padding: 10px; background-color: #000000; color: white;}
+footer div{ width: 80%; margin: 0 auto;}
+
+.gms-text-center{
+text-align: center;
+}
+/*main link*/
+#go_main{
+	float: right;
+}
+#title{
+	text-align: center;
+}
+#container{
+	width: 80%;
+	margin:0 auto;
+	padding: 5%;
+	border: 1px solid #000000;
+}
+.gms-border-black{
+border: 1px solid black;
+}
+.gms-width-30pro{
+width: 30%;
+}
+.gms-text-deco-none{
+text-decoration: none;
+}
+.gms-margin-auto{
+margin: 0 auto;
+}
+.gms-list-style-none{
+list-style: none;
+}
+.gms-border-collapse{
+border-collapse: collapse;
+}
+.gms-width-100pro{
+width: 100%;
+}
+
+/* unvisited link */
+a:link {color: black;}
+
+/* visited link */
+a:visited {color: green;}
+
+/* mouse over link */
+a:hover {color: #000000;}
+
+/* selected link */
+a:active { color: #000000;}
+
+
+
+/*background color*/
+.gms-busy-backgroundcolor-red{
+background-color: #400000;
+}
+.gms-busy-backgroundcolor-blue{
+background-color: #400000;
+}
+/*font color*/
+.gms-busy-color-red{
+color: #400000;
+}
+.gms-busy-color-blue{
+color: #400000;
+}
+.gms-busy-color-white{
+color: white;
+}
